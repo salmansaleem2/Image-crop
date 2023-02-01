@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import ImageInput from "./components/file/ImageInput";
+// import Default_User_Pic from "./defaultUserPic.svg";
 
-function App() {
+const App = () => {
+  const [image, setImage] = useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="col image-input">
+      <ImageInput
+        imageData={image.photo?.src}
+        // defaultPic={Default_User_Pic}
+        type="admin"
+        name="photo"
+        label="Add Photo"
+        showPreview
+        onChange={(files) => setImage(files, "admin")}
+      />
     </div>
   );
-}
+};
 
 export default App;
